@@ -18,7 +18,7 @@
 
 # Libraries
 *.lib
-*.a
+# *.a
 *.la
 *.lo
 
@@ -50,3 +50,10 @@ modules.order
 Module.symvers
 Mkfile.old
 dkms.conf
+
+# misc.
+*.sw*
+tags
+.tags
+.tags_sorted_by_file
+
