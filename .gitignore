@@ -56,3 +56,6 @@ tags
 .tags
 .tags_sorted_by_file
 
+# misc.
+*.sw*
+
