@@ -1,7 +1,13 @@
 
 OPT := -Wall -std=c99 -Wno-return-type
 SEL_OPT := -Wno-unused-variable
-SL := libs/liblinux.a
+
+DISTRIBUTION = $(shell lsb_release -s)
+ifeq ($(findstring "CentOS", $(DISTRIBUTION)), "CentOS")
+	SL := libs/libcentos.a
+else
+	SL := libs/libubuntu.a
+endif
 
 .default: all
 
