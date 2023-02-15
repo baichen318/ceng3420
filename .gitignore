@@ -53,5 +53,5 @@ dkms.conf
 
 # Self-customized
 .DS_Store
-*sw*
+*.sw*
 
