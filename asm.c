@@ -74,7 +74,7 @@ int lower5bit(char *imm, int line_no) {
         handle_err(7, line_no);
     else
         val = ((int)strtol(imm, NULL, (ret == HEX) ? 16 : 10) & 0x1F);
-    if (is_imm_in_range(val, 6))
+    if (is_imm_in_range(val, 5))
         return val;
     else
         handle_err(5, line_no);
@@ -243,6 +243,7 @@ int inst_to_binary(
         binary += (reg_to_num(arg1, line_no) << 7);
         binary += (reg_to_num(arg2, line_no) << 15);
         binary += (reg_to_num(arg3, line_no) << 20);
+        binary += (0x0 << 25);
     } else if (is_opcode(opcode) == SUB) {
         /* Lab2-1 assignment */
         warn("Lab2-1 assignment: SUB instruction\n");
@@ -329,7 +330,7 @@ int inst_to_binary(
         binary += (reg_to_num(arg1, line_no) << 7);
         struct_regs_indirect_addr* ret = parse_regs_indirect_addr(arg2, line_no);
         binary += (reg_to_num(ret->reg, line_no) << 15);
-        binary += (ret->imm << 20);
+        binary += (MASK11_0(ret->imm) << 20);
     } else if (is_opcode(opcode) == LH) {
         /* Lab2-1 assignment */
         warn("Lab2-1 assignment: LH instruction\n");
@@ -425,12 +426,15 @@ int is_imm(char *ptr) {
     int i = 0, l = strlen(ptr);
     bool hex = false;
     if (l > 3 && ptr[0] == '-' && ptr[1] == '0' && (tolower(ptr[2]) == 'x')) {
+        // negative hexadecimal
         i += 3;
         hex = true;
     } else if (l > 2 && ptr[0] == '0' && (tolower(ptr[1]) == 'x')) {
+        // positive hexadecimal
         i += 2;
         hex = true;
     } else if (l > 1 && ptr[0] == '-') {
+        // negative number
         i += 1;
     }
     while (i < l && isxdigit(ptr[i]))
@@ -864,6 +868,10 @@ void assemble(char *input_file_name, char *output_file_name) {
             number_of_labels++;
             addr += 0x4;
         }
+        if (is_opcode(opcode) == LA) {
+            // `la` pseudo instruciton
+            addr += 0x4;
+        }
     }
 
     #ifdef DEBUG
@@ -935,6 +943,10 @@ void assemble(char *input_file_name, char *output_file_name) {
                     addr
                 )
             );
+            addr += 0x4;
+        }
+        if (is_opcode(opcode) == LA) {
+            // `la` pseudo instruciton
             addr += 0x4;
         }
     }

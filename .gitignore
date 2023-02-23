@@ -54,4 +54,5 @@ dkms.conf
 # Self-customized
 .DS_Store
 *.sw*
+tools/report
 
