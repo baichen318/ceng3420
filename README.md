@@ -20,4 +20,7 @@ CENG3420 Lab Assignments
 - please refer to the code website: https://github.com/baichen318/ceng3420
 
 ## History
-* Feb. 15, 2022: Lab 2-1 is released
+* Feb. 23, 2023: Update Lab 2-1, including
+    - update the golden binaries,
+    - add 'add4' benchmark
+* Feb. 15, 2023: Lab 2-1 is released
