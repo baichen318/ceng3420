@@ -1,6 +1,6 @@
 /***************************************************************/
 /*                                                             */
-/*                  RISCV-LC Assembler                         */
+/*                  RISCV-LC Simulator                         */
 /*                                                             */
 /*                     CEG3420 Lab2                            */
 /*                 cbai@cse.cuhk.edu.hk                        */

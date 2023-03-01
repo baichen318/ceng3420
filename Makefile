@@ -20,9 +20,6 @@ all: asm
 $(TGT): $(SRC)
 	$(CC) $(OPT) $^ -o $@
 
-validate: $(TGT)
-	bash $(VAL)
-
 .PHONY: clean
 clean:
 	rm -f asm *.bin

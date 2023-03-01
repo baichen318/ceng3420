@@ -1,26 +1,25 @@
 /***************************************************************/
 /*                                                             */
-/*                  RISCV-LC Assembler                         */
+/*                  RISCV-LC Simulator                         */
 /*                                                             */
 /*                     CEG3420 Lab2                            */
 /*                 cbai@cse.cuhk.edu.hk                        */
 /*           The Chinese University of Hong Kong               */
 /*                                                             */
 /***************************************************************/
- 
+
 
 #ifndef __UTIL_H__
 #define __UTIL_H__
 
 
-#include <stdio.h>
-#include <ctype.h>
 #include <stdlib.h>
+#include <stdio.h>
 #include <string.h>
+#include <ctype.h>
 #include <stdarg.h>
 #include <stddef.h>
 #include <stdbool.h>
-
 
 #ifndef NDEBUG
 #undef assert

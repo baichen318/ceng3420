@@ -1,7 +1,7 @@
 # ceng3420
 CENG3420 Lab Assignments
 
-## Lab 2-1: Finish the RV32I assembler including 25 instructions in `asm.c` as follows
+## Lab 2-2: Finish the RV32I assembler including 24 instructions in `sim.c` as follows
 * Integer Register-Immediate Instructions:
             slli, xori, srli, srai, ori, andi, lui
 * Integer Register-Register Operations:
@@ -9,9 +9,9 @@ CENG3420 Lab Assignments
 * Unconditional Jumps:
             jalr, jal
 * Conditional Branches:
-           bne, blt, bge
+            bne, blt, bge
 * Load and Store Instructions:
-            lb, lh, lw, sb, sh, sw
+            h, lw, sb, sh, sw
 
 ## For more info.
 
@@ -20,6 +20,7 @@ CENG3420 Lab Assignments
 - please refer to the code website: https://github.com/baichen318/ceng3420
 
 ## History
+* Mar.  1, 2023: Lab 2-2 is released
 * Feb. 23, 2023: Update Lab 2-1, including
     - update the golden binaries,
     - add 'add4' benchmark

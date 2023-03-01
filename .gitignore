@@ -55,4 +55,4 @@ dkms.conf
 .DS_Store
 *.sw*
 tools/report
-
+dumpsim
