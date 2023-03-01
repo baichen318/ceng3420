@@ -15,7 +15,7 @@ VAL := tools/validate.sh
 
 .default: all
 
-all: asm
+all: sim
 
 $(TGT): $(SRC)
 	$(CC) $(OPT) $^ -o $@
