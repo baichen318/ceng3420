@@ -429,7 +429,7 @@ void handle_beq(unsigned int cur_inst) {
             (MASK30_25(cur_inst) << 5) + \
             (MASK11_8(cur_inst) << 1);
     if (CURRENT_LATCHES.REGS[rs1] == CURRENT_LATCHES.REGS[rs2])
-        NEXT_LATCHES.PC = sext(imm12, 12) + NEXT_LATCHES.PC;
+        NEXT_LATCHES.PC = sext(imm12, 12) + CURRENT_LATCHES.PC;
 }
 
 

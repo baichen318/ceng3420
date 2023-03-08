@@ -9,17 +9,16 @@
 # /***************************************************************/
 
 SRC := $(shell find . -name "*.c")
-TGT := asm
+TGT := sim
 OPT := -Wall -std=c99 -Wno-return-type -O3 # -Werror
-VAL := tools/validate.sh
 
 .default: all
 
-all: asm
+all: sim
 
 $(TGT): $(SRC)
 	$(CC) $(OPT) $^ -o $@
 
 .PHONY: clean
 clean:
-	rm -f asm *.bin
+	rm -f sim *.bin
