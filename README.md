@@ -20,6 +20,9 @@ CENG3420 Lab Assignments
 - please refer to the code website: https://github.com/baichen318/ceng3420
 
 ## History
+* Mar.  8, 2023: Update Lab 2-2, including
+    - update the BEQ example
+    - update Makefile
 * Mar.  1, 2023: Lab 2-2 is released
 * Feb. 23, 2023: Update Lab 2-1, including
     - update the golden binaries,
