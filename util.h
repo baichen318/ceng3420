@@ -2,7 +2,7 @@
 /*                                                             */
 /*                  RISCV-LC Simulator                         */
 /*                                                             */
-/*                     CEG3420 Lab2                            */
+/*                     CEG3420 Lab3                            */
 /*                 cbai@cse.cuhk.edu.hk                        */
 /*           The Chinese University of Hong Kong               */
 /*                                                             */
@@ -29,6 +29,18 @@
 #include <assert.h>
 #   define assert(expr, msg)
 #endif
+
+
+// Uses compiler specific extensions if possible.
+// Even if no extension is used, undefined behavior is still raised by
+// an empty function body and the noreturn attribute.
+#ifdef __GNUC__ // GCC, Clang, ICC
+#   define CANNOT_TOUCH __builtin_unreachable()
+#endif
+#ifdef _MSC_VER // MSVC
+#   define CANNOT_TOUCH __assume(false);
+#endif
+
 
 /*
  * assert function

@@ -1,17 +1,10 @@
 # ceng3420
 CENG3420 Lab Assignments
 
-## Lab 2-2: Finish the RV32I assembler including 24 instructions in `sim.c` as follows
-* Integer Register-Immediate Instructions:
-            slli, xori, srli, srai, ori, andi, lui
-* Integer Register-Register Operations:
-            sub, sll, xor, srl, sra, or, and
-* Unconditional Jumps:
-            jalr, jal
-* Conditional Branches:
-            bne, blt, bge
-* Load and Store Instructions:
-            h, lw, sb, sh, sw
+## Lab 3-1: Implement the Finite State Machine
+* Replace all `x` in `uop` with the correct 1 or 0, according to the microarchitecture (`riscv-lc.pdf` in `docs/`) and the finite state machine (`fsm.pdf` in `docs/`).
+* Implement one line code that the register x0 is hard-wired to zero in `riscv-lc.c`.
+    - Once you implement the code, you can remove the code `error("Lab3-1 assignment: x0 is hard-wired to zero\n");` to make the simulator continues to work.
 
 ## For more info.
 
@@ -20,6 +13,7 @@ CENG3420 Lab Assignments
 - please refer to the code website: https://github.com/baichen318/ceng3420
 
 ## History
+* Mar. 22, 2023: Lab 3-1 is released.
 * Mar.  8, 2023: Update Lab 2-2, including
     - update the BEQ example
     - update Makefile
