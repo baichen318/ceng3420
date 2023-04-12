@@ -31,36 +31,98 @@ void cycle() {
 }
 
 
-void eval_micro_sequencer() {
-    /*
-     * Lab3-1 assignment: implement that x0 is hard-wired to zero
-     * i.e., x0 always equal to zero
-     */
-    error("Lab3-1 assignment: x0 is hard-wired to zero\n");
+void cycle_memory() {
+    static int mem_cycle_cnt = 0;
 
-    int ird = get_IRD(CURRENT_LATCHES.MICROINSTRUCTION);
-    int j = get_J(CURRENT_LATCHES.MICROINSTRUCTION);
-    int _B = blockBMUX(
-        get_LD_BEN(CURRENT_LATCHES.MICROINSTRUCTION),
-        0,
-        CURRENT_LATCHES.B
-    );
+    int mio_en = get_MIO_EN(CURRENT_LATCHES.MICROINSTRUCTION),
+        we = get_WE(CURRENT_LATCHES.MICROINSTRUCTION);
+    int W = ~mask_val(CURRENT_LATCHES.MAR, 0, 0) & we;
 
-    if (ird)
-        NEXT_LATCHES.STATE_NUMBER = mask_val(CURRENT_LATCHES.IR, 6, 0);
-    else
-        NEXT_LATCHES.STATE_NUMBER = j | (_B << 3) | (CURRENT_LATCHES.READY << 2);
+    MEM_VAL = 0;
+    NEXT_LATCHES.READY = 0;
+    info("memory cycle count = %d\n", mem_cycle_cnt);
+    info("MIO_EN = %d, WE = %d, W = %d\n", mio_en, we, W);
 
-    memcpy(
-        NEXT_LATCHES.MICROINSTRUCTION,
-        CONTROL_STATE[NEXT_LATCHES.STATE_NUMBER],
-        sizeof(int) * CONTROL_SIGNAL_BITS
-    );
+    if (mio_en) {
+        if (mem_cycle_cnt == MEM_CYCLES) {
+            mem_cycle_cnt = 0;
+            NEXT_LATCHES.READY = 1;
+        }
+        if (W) {
+            /* write */
+            /*
+             * Lab3-2 assignment
+             */
+            error("Lab3-2 assignment: write to the main memory");
+        } else {
+            /* read */
+            /*
+             * Lab3-2 assignment
+             * Tips: assign the read value to `MEM_VAL`
+             */
+            error("Lab3-2 assignment: read from the main memory");
+        }
+        mem_cycle_cnt++;
+    } else
+        mem_cycle_cnt = 0;
+}
 
-    /*
-     * reset
-     */
-    NEXT_LATCHES.B = 0;
+
+void latch_datapath_values() {
+    /* LD.MDR */
+    if (get_LD_MDR(CURRENT_LATCHES.MICROINSTRUCTION)) {
+        NEXT_LATCHES.MDR = mdr_mux(
+            get_MDRMUX(CURRENT_LATCHES.MICROINSTRUCTION),
+            MEM_VAL,
+            BUS
+        );
+    }
+    /* LD.BEN */
+    if (get_LD_BEN(CURRENT_LATCHES.MICROINSTRUCTION)) {
+        NEXT_LATCHES.B = compare_function_unit(
+            mask_val(CURRENT_LATCHES.IR, 14, 12),
+            rs1_en(
+                get_RS1En(CURRENT_LATCHES.MICROINSTRUCTION),
+                CURRENT_LATCHES.REGS[mask_val(CURRENT_LATCHES.IR, 19, 15)]
+            ),
+            rs2_en(
+                get_RS2En(CURRENT_LATCHES.MICROINSTRUCTION),
+                CURRENT_LATCHES.REGS[mask_val(CURRENT_LATCHES.IR, 24, 20)]
+            ),
+            0
+        );
+    }
+    /* LD.REG */
+    if (get_LD_REG(CURRENT_LATCHES.MICROINSTRUCTION)) {
+        /*
+         *  Lab3-2 assignment
+         */
+        error("Lab3-2 assignment: handle LD_REG");
+    }
+    /* LD.MAR */
+    if (get_LD_MAR(CURRENT_LATCHES.MICROINSTRUCTION)) {
+        /*
+         *  Lab3-2 assignment
+         */
+        error("Lab3-2 assignment: handle LD_MAR");
+    }
+    /* LD.IR */
+    if (get_LD_IR(CURRENT_LATCHES.MICROINSTRUCTION)) {
+        /*
+         *  Lab3-2 assignment
+         */
+        error("Lab3-2 assignment: handle LD_IR");
+    }
+    /* LD.PC */
+    if (get_LD_PC(CURRENT_LATCHES.MICROINSTRUCTION)) {
+        /*
+         *  Lab3-2 assignment
+         */
+        error("Lab3-2 assignment: handle LD_PC");
+    }
+    /* RESET */
+    if (get_RESET(CURRENT_LATCHES.MICROINSTRUCTION))
+        NEXT_LATCHES.PC = TRAPVEC_BASE_ADDR;
 }
 
 

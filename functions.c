@@ -80,8 +80,8 @@ int alu(int funct3, int funct7, int rs1, int operand) {
                     return rs1 + operand;
                 case 0b0100000:
                     return rs1 - operand;
-				default:
-					return rs1 + operand;
+                default:
+                    return rs1 + operand;
             }
         case 4:
             return rs1 ^ operand;
@@ -224,15 +224,15 @@ int alu_shift_mux(int funct3, int value_of_alu, int value_of_shift_function_unit
 
 
 int blockBMUX(int bmux, int zero, int B) {
-	switch(bmux) {
-		case 0:
-			return zero;
-		case 1:
-			return B;
+    switch(bmux) {
+        case 0:
+            return zero;
+        case 1:
+            return B;
         default:
             error("unknown LD_BEN = %d\n", bmux);
-	}
-	CANNOT_TOUCH;
+    }
+    CANNOT_TOUCH;
 }
 
 
@@ -255,13 +255,13 @@ int compare_function_unit(int funct3, int rs1, int rs2, int zero) {
 
 
 int datasize_mux(unsigned int data_size, int funct3, int zero) {
-	if (data_size) {
-		switch(data_size) {
-			case 0:
-				return zero;
-			case 1:
-			 return ~(funct3 & 0x3);
-		}
-	} else
-		return zero;
+    if (data_size) {
+        switch(data_size) {
+            case 0:
+                return zero;
+            case 1:
+             return ~(funct3 & 0x3);
+        }
+    } else
+        return zero;
 }
