@@ -13,6 +13,12 @@ CENG3420 Lab Assignments
 - please refer to the code website: https://github.com/baichen318/ceng3420
 
 ## History
+* Apr. 19, 2023: Update Lab 3-2, including
+	- fsm.pdf
+	- riscv-lc.pdf
+* Apr. 19, 2023: Update Lab 3-1, including
+	- fsm.pdf
+	- riscv-lc.pdf
 * Apr. 12, 2023: Lab 3-2 is released.
 * Mar. 22, 2023: Lab 3-1 is released.
 * Mar.  8, 2023: Update Lab 2-2, including
