@@ -1,10 +1,10 @@
 # ceng3420
 CENG3420 Lab Assignments
 
-## Lab 3-2: Implement the Finite State Machine
+## Lab 3-3: Implement the Data Path
 * Replace `uop` with the version you have implemented in Lab 3-1.
-* Finish the function "cycle_memory" in `riscv-lc.c`.
-* Finish the function "latch_datapath_values" in `riscv-lc.c`.
+* Finish `eval_bus_drivers` in `riscv-lc.c`.
+* Finish `drive_bus` in `riscv-lc.c`.
 
 ## For more info.
 
@@ -13,6 +13,7 @@ CENG3420 Lab Assignments
 - please refer to the code website: https://github.com/baichen318/ceng3420
 
 ## History
+* Apr. 19, 2023: Lab 3-3 is released.
 * Apr. 19, 2023: Update Lab 3-2: riscv-lc.pdf
 * Apr. 19, 2023: Update Lab 3-1: riscv-lc.pdf
 * Apr. 19, 2023: Update Lab 3-2, including
@@ -26,8 +27,8 @@ CENG3420 Lab Assignments
 * Mar.  8, 2023: Update Lab 2-2, including
     - update the BEQ example
     - update Makefile
-* Mar.  1, 2023: Lab 2-2 is released
+* Mar.  1, 2023: Lab 2-2 is released.
 * Feb. 23, 2023: Update Lab 2-1, including
     - update the golden binaries,
     - add 'add4' benchmark
-* Feb. 15, 2023: Lab 2-1 is released
+* Feb. 15, 2023: Lab 2-1 is released.
