@@ -9,6 +9,7 @@
 # /***************************************************************/
 
 OS := $(shell uname -s)
+ARCH := $(shell uname -m)
 SRC := $(shell find . -name "*.c")
 TGT := riscv-lc
 LIB := lib$(TGT).a
@@ -16,12 +17,16 @@ OPT := -Wall -std=c99 -Wno-return-type -O3
 
 
 ifeq ($(OS), Darwin)
-	lib_path = ./tools/macos
-endif
-ifeq ($(OS), Linux)
-	lib_path = ./tools/linux
-endif
-ifeq (MINGW64, $(findstring MINGW64, $(OS)))
+	lib_path = ./tools/macos/$(ARCH)
+else ifeq ($(OS), Linux)
+	REL := $(shell lsb_release -si)
+	VER := $(shell lsb_release -sr)
+	ifeq ($(REL), Ubuntu)
+		lib_path = ./tools/linux/ubuntu/$(VER)
+	else
+		lib_path = ./tools/linux/centos
+	endif
+else ifeq (MINGW64, $(findstring MINGW64, $(OS)))
 	lib_path = ./tools/win
 	CC = gcc
 endif
