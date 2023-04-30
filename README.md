@@ -13,6 +13,9 @@ CENG3420 Lab Assignments
 - please refer to the code website: https://github.com/baichen318/ceng3420
 
 ## History
+* Apr. 30, 2023: Update static libraries for
+    - x86, MacOS
+    - x86, Ubuntu 18.06
 * Apr. 19, 2023: Lab 3-3 is released.
 * Apr. 19, 2023: Update Lab 3-2: riscv-lc.pdf
 * Apr. 19, 2023: Update Lab 3-1: riscv-lc.pdf
